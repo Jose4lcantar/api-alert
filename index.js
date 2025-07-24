@@ -8,20 +8,18 @@ const app = express();
 
 app.use(cors());
 app.use(express.json());
+
+// Para servir archivos como audios
 app.use('/uploads', express.static('uploads'));
 
+// Rutas
 app.use('/api/alerta', alertaRoutes);
 
-// Ruta básica para verificar si está funcionando
 app.get('/', (req, res) => {
   res.send('¡API de Alertas funcionando correctamente! ✅');
 });
 
-app.get('/ping', (req, res) => {
-  res.send('pong');
-});
-
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
-  console.log(`API escuchando en puerto ${PORT}`);
+  console.log(`✅ API escuchando en puerto ${PORT}`);
 });
